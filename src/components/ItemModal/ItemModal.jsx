@@ -1,7 +1,7 @@
 import './ItemModal.css'
 
 function ItemModal() {
-    return (
-
-    )
+    return 
 }
+
+export default ItemModal;
