@@ -1,20 +1,24 @@
-.card-weather {
+.weather-card {
+    position: relative;
     display: flex;
-    align-items: center;
-    padding: 32px 0 28px;
+    height: 80px;
+    border-radius: 12px;
+    overflow: hidden;
 }
 
-.card__temp {
+.weather-card__temp {
+    margin: 0;
     position: absolute;
     top: 120px;
-    left: 56px;
+    left: 36px;
     color: #fff;
     font-weight: 700;
     font-size: 36px;
     line-height: 40px;
 }
 
-.card__img {
-    position: relative;
+.weather-card__img {
     width: 100%;
+    object-fit: cover;
+    object-position: right top;
 }
