@@ -12,15 +12,21 @@
 
 .header__caption {
     margin: 0;
+    font-family: "CabinetGrotesk";
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
 }
 
 .header__button {
     margin: 0 20px 0 auto;
-    width: 116px;
-    height: 24px;
     background: none;
     border: none;
     cursor: pointer;
+    font-family: "CabinetGrotesk";
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
 }
 
 .header__user-section {
@@ -31,6 +37,10 @@
 
 .header__username {
     margin: 0;
+    font-family: "CabinetGrotesk";
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
 }
 
 .header__avatar {

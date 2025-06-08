@@ -1,5 +1,5 @@
 .weather-card {
-    position: relative;
+    
     display: flex;
     height: 80px;
     border-radius: 12px;
@@ -12,12 +12,14 @@
     top: 120px;
     left: 36px;
     color: #fff;
+    font-family: "CabinetGrotesk";
     font-weight: 700;
     font-size: 36px;
     line-height: 40px;
 }
 
 .weather-card__img {
+    position: relative;
     width: 100%;
     object-fit: cover;
     object-position: right top;

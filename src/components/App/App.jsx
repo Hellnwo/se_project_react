@@ -44,7 +44,7 @@ function App() {
       <Footer />
       <FormModal
         title="New garment"
-        ButtonText="Add garment"
+        buttonText="Add garment"
         activeModal={activeModal}
         onClose={closeActiveModal}
       >

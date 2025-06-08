@@ -20,7 +20,7 @@ if (filteredOption.length === 0) {
     return (
         <section className='weather-card'>
             <img src={weatherOption.url} alt={`Card showing ${weatherOption?.day ? "day" : "night"} time ${weatherOption?.condition} weather`} className='weather-card__img' />
-            <p className='weather-card__temp'>{weatherData.temp.F} ° </p>
+            <p className='weather-card__temp'>{weatherData.temp.F}°F</p>
         </section>
     )
 }

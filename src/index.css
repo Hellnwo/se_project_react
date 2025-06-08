@@ -1,1 +1,14 @@
 @import url(./vendor/normalize.css);
+
+@font-face {
+  font-family: "CabinetGrotesk";
+  font-style: medium;
+  font-weight: 500;
+  src: url("../src/vendor/CabinetGrotesk-Medium.otf") format("truetype");
+}
+@font-face {
+  font-family: "CabinetGrotesk";
+  font-style: bold;
+  font-weight: 700;
+  src: url("../src/vendor/CabinetGrotesk-Bold.otf") format("truetype");
+}
