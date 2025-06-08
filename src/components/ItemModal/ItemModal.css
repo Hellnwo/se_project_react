@@ -1,19 +1,33 @@
 .modal__content_type_image {
-
+  display: flex;
+  max-width: 670px;
+  max-height: 368px;
 }
 
 .modal__image {
-
-}
-
-.modal__footer {
-
+  width: 325px;
+  border-radius: 16px;
 }
 
 .modal__caption {
-
+  position: absolute;
+  top: 48px;
+  left: 154px;
+  margin: 0;
+  font-family: "CabinetGrotesk";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  opacity: 0.6;
+  background-color: rgba(255, 255, 255, 1);
+  padding: 2px 12px;
+  border-radius: 4px;
 }
 
 .modal__weather {
-    
+    font-family: "CabinetGrotesk";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  padding: 0 28px;
 }
