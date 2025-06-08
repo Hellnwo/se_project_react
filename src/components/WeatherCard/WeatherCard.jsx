@@ -12,14 +12,14 @@ const filteredOption = weatherOptions.filter((option) => {
 
 let weatherOption;
 if (filteredOption.length === 0) {
-    weatherOption = defaultWeatherOptions[weatherData.isDay ? 'day' : 'night'];
+    weatherOption = defaultWeatherOptions[weatherData.isDay ? "day" : "night"];
 } else {
     weatherOption = filteredOption[0];
 }
 
     return (
-        <section classsName='weather-card'>
-            <img src={weatherOption.url} alt={`Card showing ${weatherOption?.day ? 'day' : 'night'} time ${weatherOption?.condition} weather`} className='weather-card__img' />
+        <section className='weather-card'>
+            <img src={weatherOption.url} alt={`Card showing ${weatherOption?.day ? "day" : "night"} time ${weatherOption?.condition} weather`} className='weather-card__img' />
             <p className='weather-card__temp'>{weatherData.temp.F} ° </p>
         </section>
     )
