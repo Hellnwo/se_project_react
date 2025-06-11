@@ -1,49 +1,49 @@
 .header {
-    display: flex;
-    align-items: center;
-    padding: 32px 0 28px;
+  display: flex;
+  align-items: center;
+  padding: 32px 0 28px;
 }
 
 .header__logo {
-    margin-right: 24px;
-    width:89px;
-    height:40px;
+  margin-right: 24px;
+  width: 89px;
+  height: 40px;
 }
 
 .header__caption {
-    margin: 0;
-    font-family: "CabinetGrotesk";
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 24px;
+  margin: 0;
+  font-family: "CabinetGrotesk";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
 }
 
 .header__button {
-    margin: 0 20px 0 auto;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: "CabinetGrotesk";
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 24px;
+  margin: 0 20px 0 auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "CabinetGrotesk";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
 }
 
 .header__user-section {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .header__username {
-    margin: 0;
-    font-family: "CabinetGrotesk";
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 24px;
+  margin: 0;
+  font-family: "CabinetGrotesk";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
 }
 
 .header__avatar {
-    width: 40px;
-    height: 40px;
+  width: 40px;
+  height: 40px;
 }
