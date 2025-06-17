@@ -7,17 +7,23 @@ import FormModal from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherAPI";
 import { coordinates, APIkey } from "../../utils/constants";
+import currentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext"
 
 function App() {
   const [weatherData, setWeatherData] = useState({
     type: "",
     temp: { F: 999, C: 999 },
     city: "",
+    condition: "",
+    isDay: false,
   });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
-  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState('F');
+  const handleToggleSwitchChange = () => {
+    setCurrentTemperatureUnit(currentTemperatureUnit === "F"? "C":"F");
+    }
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -42,10 +48,14 @@ function App() {
   }, []);
 
   return (
+    <currentTemperatureUnitContext.Provider value={{currentTemperatureUnit, handleToggleSwitchChange}}>
     <div className="page">
       <div className="page__content">
         <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-        <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+        <Main
+          weatherData={weatherData}
+          handleCardClick={handleCardClick}
+        />
       </div>
       <Footer />
       <FormModal
@@ -76,19 +86,37 @@ function App() {
         <fieldset className="modal__radio-btns">
           <legend className="modal__legend">Select the weather type:</legend>
           <label htmlFor="hot" className="modal__label modal__label_type_radio">
-            <input id="hot" type="radio" name="choice" className="modal__radio-input" /> Hot
+            <input
+              id="hot"
+              type="radio"
+              name="choice"
+              className="modal__radio-input"
+            />{" "}
+            Hot
           </label>
           <label
             htmlFor="warm"
             className="modal__label modal__label_type_radio"
           >
-            <input id="warm" type="radio" name="choice" className="modal__radio-input" /> Warm
+            <input
+              id="warm"
+              type="radio"
+              name="choice"
+              className="modal__radio-input"
+            />{" "}
+            Warm
           </label>
           <label
             htmlFor="cold"
             className="modal__label modal__label_type_radio"
           >
-            <input id="cold" type="radio" name="choice" className="modal__radio-input" /> Cold
+            <input
+              id="cold"
+              type="radio"
+              name="choice"
+              className="modal__radio-input"
+            />{" "}
+            Cold
           </label>
         </fieldset>
       </FormModal>
@@ -99,7 +127,8 @@ function App() {
         isOpen={activeModal === "preview"}
       />
     </div>
+    </currentTemperatureUnitContext.Provider>
   );
-}
+};
 
 export default App;
