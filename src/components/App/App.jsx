@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -9,6 +10,7 @@ import { getWeather, filterWeatherData } from "../../utils/weatherAPI";
 import { coordinates, APIkey } from "../../utils/constants";
 import currentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import Profile from "../Profile/Profile";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -61,9 +63,16 @@ function App() {
       <div className="page">
         <div className="page__content">
           <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-          <Main weatherData={weatherData} handleCardClick={handleCardClick} clothingItems={clothingItems} />
-        </div>
+          <Routes>
+            <Route 
+            path='/'
+            element=
+          {<Main weatherData={weatherData} onCardClick={handleCardClick} clothingItems={clothingItems} />}
+          />
+        <Route path='/profile' element={<Profile onCardClick={handleCardClick} />} />
+        </Routes>
         <Footer />
+        </div>
         <AddItemModal
           onClose={closeActiveModal}
           isOpen={activeModal === "add-garment"}
