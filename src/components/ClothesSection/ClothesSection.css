@@ -1,7 +1,40 @@
 .clothes-section {
-
+  display: flex;
+  flex-direction: column;
+  margin: 0;
 }
 
 .clothes-section__items {
-    
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-items: center;
+  grid-gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.clothes-section__text {
+    display: flex;
+    flex-direction: row;
+}
+
+.clothes-section__caption {
+    max-width: 100px;
+  font-family: "CabinetGrotesk";
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+}
+
+.clothes-section__button {
+    padding-left: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "CabinetGrotesk";
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
 }

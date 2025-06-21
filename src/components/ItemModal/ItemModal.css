@@ -31,3 +31,16 @@
   line-height: 24px;
   padding: 0 28px;
 }
+
+.modal__item-dlt-btn {
+  margin-top: 200px;
+  margin-left: 20px;
+background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "CabinetGrotesk";
+  color: rgba(255, 77, 0, 1);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}

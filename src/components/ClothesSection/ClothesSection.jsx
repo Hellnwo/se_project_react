@@ -1,17 +1,16 @@
 import './ClothesSection.css';
-import { defaultClothingItems } from "../../utils/constants";
 import ItemCard from "../ItemCard/ItemCard";
 
-export default function ClothesSection({ onCardClick }) {
+export default function ClothesSection({ onCardClick, clothingItems }) {
 
     return(
         <div className="clothes-section">
-            <div>
-                <p>Your Items</p>
-                <button>+ Add New</button>
+            <div className="clothes-section__text">
+                <p className="clothes-section__caption">Your Items</p>
+                <button className="clothes-section__button" type="button">+ Add New</button>
             </div>
             <ul className="clothes-section__items">
-          {defaultClothingItems
+          {clothingItems
             .map((item) => {
               return (
                 <ItemCard

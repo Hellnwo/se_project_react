@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import { getItems, postCard, deleteCard } from "../../utils/API";
 import "./App.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
 import ItemModal from "../ItemModal/ItemModal";
-import { defaultClothingItems } from "../../utils/constants";
 import { getWeather, filterWeatherData } from "../../utils/weatherAPI";
 import { coordinates, APIkey } from "../../utils/constants";
 import currentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
+import DeleteModal from "../DeleteModal/DeleteModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -23,7 +24,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState([]);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -38,13 +39,32 @@ function App() {
     setActiveModal("add-garment");
   };
 
+  const handleDeleteClick = () => {
+    setActiveModal("delete-confirm");
+  };
+
   const closeActiveModal = () => {
     setActiveModal("");
   };
 
-  const handleAddItemModalSubmit = ({name, imageUrl, weather}) => {
-    setClothingItems([{name, link: imageUrl, weather}, ...clothingItems]);
-    closeActiveModal();
+  const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
+    postCard({ name, weather, imageUrl })
+      .then(() => {
+        setClothingItems([{ name, imageUrl, weather }, ...clothingItems]);
+        closeActiveModal();
+      })
+      .catch(console.error);
+  };
+
+  const handleDeleteBtn = (id) => {
+    deleteCard(id)
+      .then(() => {
+        setClothingItems((prevItems) =>
+        prevItems.filter((item) => item._id !== id)
+      );
+        closeActiveModal();
+      })
+      .catch(console.error);
   };
 
   useEffect(() => {
@@ -52,6 +72,14 @@ function App() {
       .then((data) => {
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
+      })
+      .catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    getItems()
+      .then((data) => {
+        setClothingItems(data);
       })
       .catch(console.error);
   }, []);
@@ -64,14 +92,27 @@ function App() {
         <div className="page__content">
           <Header handleAddClick={handleAddClick} weatherData={weatherData} />
           <Routes>
-            <Route 
-            path='/'
-            element=
-          {<Main weatherData={weatherData} onCardClick={handleCardClick} clothingItems={clothingItems} />}
-          />
-        <Route path='/profile' element={<Profile onCardClick={handleCardClick} />} />
-        </Routes>
-        <Footer />
+            <Route
+              path="/"
+              element={
+                <Main
+                  weatherData={weatherData}
+                  onCardClick={handleCardClick}
+                  clothingItems={clothingItems}
+                />
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <Profile
+                  onCardClick={handleCardClick}
+                  clothingItems={clothingItems}
+                />
+              }
+            />
+          </Routes>
+          <Footer />
         </div>
         <AddItemModal
           onClose={closeActiveModal}
@@ -83,6 +124,12 @@ function App() {
           card={selectedCard}
           onClose={closeActiveModal}
           isOpen={activeModal === "preview"}
+          onDeleteClick={handleDeleteClick}
+        />
+        <DeleteModal 
+        onClose={closeActiveModal}
+          isOpen={activeModal === "delete-confirm"}
+          onDeleteBtn={handleDeleteBtn}
         />
       </div>
     </currentTemperatureUnitContext.Provider>
