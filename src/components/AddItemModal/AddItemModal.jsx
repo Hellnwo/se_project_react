@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./AddItemModal.css";
-import FormModal from "../ModalWithForm/ModalWithForm"
+import ModalWithForm from "../ModalWithForm/ModalWithForm"
 
 export default function AddItemModal( { onClose, isOpen, onAddItemModalSubmit} ) {
     const [name, setName] = useState("");
@@ -28,7 +28,7 @@ export default function AddItemModal( { onClose, isOpen, onAddItemModalSubmit} )
     }
 
     return (
-         <FormModal
+         <ModalWithForm
         title="New garment"
         buttonText="Add garment"
         onClose={onClose}
@@ -107,6 +107,6 @@ export default function AddItemModal( { onClose, isOpen, onAddItemModalSubmit} )
             Cold
           </label>
         </fieldset>
-      </FormModal>
+      </ModalWithForm>
     )
 }
