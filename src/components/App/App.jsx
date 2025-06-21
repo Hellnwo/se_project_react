@@ -8,7 +8,7 @@ import Main from "../Main/Main";
 import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherAPI";
 import { coordinates, APIkey } from "../../utils/constants";
-import currentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
 import DeleteModal from "../DeleteModal/DeleteModal";
@@ -85,7 +85,7 @@ function App() {
   }, []);
 
   return (
-    <currentTemperatureUnitContext.Provider
+    <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
       <div className="page">
@@ -132,7 +132,7 @@ function App() {
           onDeleteBtn={handleDeleteBtn}
         />
       </div>
-    </currentTemperatureUnitContext.Provider>
+    </CurrentTemperatureUnitContext.Provider>
   );
 }
 
