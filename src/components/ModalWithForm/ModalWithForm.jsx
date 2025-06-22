@@ -23,4 +23,4 @@ function ModalWithForm({ children, buttonText, title, onClose, isOpen, onSubmit 
   );
 }
 
-export default FormModal;
+export default ModalWithForm;
