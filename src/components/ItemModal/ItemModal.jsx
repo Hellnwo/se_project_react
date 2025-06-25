@@ -1,7 +1,7 @@
 import "./ItemModal.css";
 import "../DeleteModal/DeleteModal.css"
 
-function ItemModal({ onClose, card, isOpen, onDeleteClick }) {
+function ItemModal({ onClose, card, isOpen, onDeleteClick, itemId }) {
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__content modal__content_type_image">
@@ -14,7 +14,7 @@ function ItemModal({ onClose, card, isOpen, onDeleteClick }) {
         <div className="modal__footer">
           <h2 className="modal__caption">{card.name}</h2>
           <p className="modal__weather">Weather: {card.weather}</p>
-            <button type="button" className="modal__item-dlt-btn" onClick={onDeleteClick} >Delete Item</button>
+            <button type="button" className="modal__item-dlt-btn" onClick={() => onDeleteClick(itemId)} >Delete Item</button>
         </div>
       </div>
     </div>

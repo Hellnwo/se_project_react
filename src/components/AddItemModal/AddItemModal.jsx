@@ -21,6 +21,7 @@ export default function AddItemModal( { onClose, isOpen, onAddItemModalSubmit} )
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log("form submitted")
         onAddItemModalSubmit({name, imageUrl, weather});
         setName("");
         setWeather("");
@@ -33,7 +34,7 @@ export default function AddItemModal( { onClose, isOpen, onAddItemModalSubmit} )
         buttonText="Add garment"
         onClose={onClose}
         isOpen={isOpen}
-        handleSubmit={handleSubmit}
+        onSubmit={handleSubmit}
       >
         <label htmlFor="name" className="modal__label">
           Name{""}

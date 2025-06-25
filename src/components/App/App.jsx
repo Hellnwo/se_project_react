@@ -108,6 +108,7 @@ function App() {
                 <Profile
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
+                  handleAddClick={handleAddClick}
                 />
               }
             />
@@ -125,11 +126,13 @@ function App() {
           onClose={closeActiveModal}
           isOpen={activeModal === "preview"}
           onDeleteClick={handleDeleteClick}
+          itemId={selectedCard._id}
         />
         <DeleteModal 
         onClose={closeActiveModal}
           isOpen={activeModal === "delete-confirm"}
           onDeleteBtn={handleDeleteBtn}
+          itemId={selectedCard._id}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>
