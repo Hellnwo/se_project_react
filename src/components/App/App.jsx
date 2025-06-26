@@ -49,8 +49,8 @@ function App() {
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
     postCard({ name, weather, imageUrl })
-      .then(() => {
-        setClothingItems([{ name, imageUrl, weather }, ...clothingItems]);
+      .then((newItem) => {
+        setClothingItems([newItem, ...clothingItems]);
         closeActiveModal();
       })
       .catch(console.error);

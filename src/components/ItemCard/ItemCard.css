@@ -22,6 +22,8 @@
 
 .card__image {
   height: 326px;
+  width: 100%;
+  object-fit: cover;
   border-radius: 19px;
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
