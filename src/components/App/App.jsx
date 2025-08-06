@@ -33,7 +33,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [CurrentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [CurrentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [clothingItems, setClothingItems] = useState([]);
 
@@ -121,6 +121,25 @@ function App() {
     navigate("/");
   }
 
+  const handleCardLike = ({ id, isLiked }) => {
+  const token = localStorage.getItem("jwt");
+  !isLiked
+    ? addCardLike(id, token)
+        .then((updatedCard) => {
+          setClothingItems((cards) =>
+            cards.map((item) => (item._id === id ? updatedCard : item))
+          );
+        })
+        .catch((err) => console.log(err))
+    : removeCardLike(id, token)
+        .then((updatedCard) => {
+          setClothingItems((cards) =>
+            cards.map((item) => (item._id === id ? updatedCard : item))
+          );
+        })
+        .catch((err) => console.log(err));
+  };
+
   const handleRegisterModalSubmit = ({ email, password, name, avatarUrl }) => {
     signup(email, password, name, avatarUrl)
       .then((data) => {
@@ -195,11 +214,15 @@ function App() {
       .catch(console.error);
   }, []);
 
+    const ProtectedRoute = ({ isloggedIn, children }) => {
+   return isloggedIn ? children : <Navigate to="/" />;
+  };
+
   return (
     <CurrentTemperatureUnitContext.Provider
       value={{ CurrentTemperatureUnit, handleToggleSwitchChange }}
     >
-      <CurrentUserContext.Provider value={{ CurrentUser, isLoggedIn, handleSignOut }}>
+      <CurrentUserContext.Provider value={{ currentUser, isLoggedIn, handleSignOut }}>
       <div className="page">
         <div className="page__content">
           <Header 
@@ -251,8 +274,7 @@ function App() {
           card={selectedCard}
           onClose={closeActiveModal}
           isOpen={activeModal === "preview"}
-          onDeleteClick={handleDeleteClick}
-          itemId={selectedCard._id}
+          handleDeleteClick={handleDeleteClick}
         />
         <DeleteModal 
         onClose={closeActiveModal}
@@ -262,13 +284,13 @@ function App() {
         />
         <LoginModal 
         isOpen={activeModal === 'login'} 
-        onClose={() => setActiveModal(null)} 
+        onClose={() => setActiveModal("")} 
         switchToSignUp={switchToSignUpModal} 
         handleSignInModalSubmit={handleSignInModalSubmit} 
         />
           <RegisterModal 
           isOpen={activeModal === 'sign-up'} 
-          onClose={() => setActiveModal(null)} 
+          onClose={() => setActiveModal("")} 
           switchToLogin={switchToLoginModal} 
           onRegisterModalSubmit={handleRegisterModalSubmit}
           />
