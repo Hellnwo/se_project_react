@@ -1,19 +1,25 @@
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import heart from "../../assets/heart.svg";
+import heartf from "../../assets/heartf.svg";
 import "./ItemCard.css";
 
-function ItemCard({ item, onCardClick }) {
-  const handleCardClick = () => {
-    onCardClick(item);
-  };
+function ItemCard ({ card, handleCardClick, handleCardLike }) {
+  const {currentUser} = useContext(CurrentUserContext);
+  const isLiked = currentUser?._id && card.likes.includes(currentUser._id);
+  console.log(card, currentUser, isLiked);
+  const token = localStorage.getItem('jwt');
+
+  const itemLikeButtonClassName = `card__like-button ${isLiked ? 'card__like-button_active' : ''}`;
+  const heartIcon = isLiked ? heartf : heart;
+  const handleClick = () => handleCardClick(card);
 
   return (
     <li className="card">
-      <h2 className="card__name">{item.name}</h2>
-      <img
-        onClick={handleCardClick}
-        className="card__image"
-        src={item.imageUrl}
-        alt={item.name}
-      />
+      <h2 className="card__name">{card.name}
+         {token && (<img className="card__like" src={heartIcon} alt={itemLikeButtonClassName} onClick={() => handleCardLike({ id: card._id, isLiked })} />)}
+      </h2>
+      <img className="card__image" src={card.imageUrl} alt={card.name} onClick={handleClick} />
     </li>
   );
 }

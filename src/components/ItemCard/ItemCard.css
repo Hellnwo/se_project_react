@@ -27,3 +27,12 @@
   border-radius: 19px;
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
+
+.card__like {
+  left: -30px;
+  margin: 0;
+  background-color: transparent;
+  border-radius: 4px;
+  height: 15px;
+  width: 18px;
+}

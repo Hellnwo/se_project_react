@@ -34,12 +34,6 @@
   line-height: 24px;
 }
 
-.header__user-section {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
 .header__username {
   margin: 0;
   font-family: "CabinetGrotesk";
@@ -48,7 +42,29 @@
   line-height: 24px;
 }
 
-.header__avatar {
+.profile__link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  color: #000000;
+}
+
+.navigation__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.navigation__user {
   width: 40px;
   height: 40px;
+}
+
+.navigation__button {
+  margin-left: 20px;
+  bottom: 8px;
+  border-radius: 0;
+  background-color: transparent;
+  border: none;
 }
