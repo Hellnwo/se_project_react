@@ -68,4 +68,4 @@ function updateUserInfo(user) {
   }).then(checkResponse)
 }
 
-export { getItems, postCard, addCard, deleteCard, addCardLike, removeCardLike, getUserData, updateUserInfo };
+export { checkResponse, getItems, postCard, addCard, deleteCard, addCardLike, removeCardLike, getUserData, updateUserInfo };

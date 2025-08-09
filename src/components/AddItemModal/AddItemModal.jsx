@@ -17,7 +17,7 @@ export default function AddItemModal( { onClose, isOpen, onAddItemModalSubmit} )
         setName(e.target.value);
     };
 
-    const handlImageUrlChange = (e) => {
+    const handleImageUrlChange = (e) => {
         setImageUrl(e.target.value);
     };
 
@@ -61,7 +61,7 @@ export default function AddItemModal( { onClose, isOpen, onAddItemModalSubmit} )
             id="imageUrl"
             placeholder="Image URL"
             required
-            onChange={handlImageUrlChange}
+            onChange={handleImageUrlChange}
             value={imageUrl}
           />
         </label>

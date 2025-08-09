@@ -34,7 +34,7 @@ export default function RegisterModal( { onClose, isOpen, onRegisterModalSubmit,
           onChange={(e)=>{setPassword(e.target.value)}} value={password} required
         />
       </label>
-      <label className="modal__label" htmlFor="name">
+      <label className="modal__label" htmlFor="newname">
         Name{" "}
         <input type="text" className="modal__input" id="newname" placeholder="Name"
           onChange={(e)=>{setName(e.target.value)}} value={name} required
