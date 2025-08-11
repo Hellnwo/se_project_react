@@ -15,12 +15,12 @@
 }
 
 .clothes-section__text {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .clothes-section__caption {
-    max-width: 100px;
+  max-width: 100px;
   font-family: "CabinetGrotesk";
   font-weight: 700;
   font-size: 20px;
@@ -28,7 +28,7 @@
 }
 
 .clothes-section__button {
-    padding-left: 20px;
+  padding-left: 20px;
   background: none;
   border: none;
   cursor: pointer;

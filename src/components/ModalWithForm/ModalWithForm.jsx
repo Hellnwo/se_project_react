@@ -14,9 +14,6 @@ function ModalWithForm({ children, buttonText, title, onClose, isOpen, onSubmit 
        /> 
         <form onSubmit={onSubmit} className="modal__form">
           {children}
-          <button type="submit" className="modal__submit">
-            {buttonText}
-          </button>
         </form>
       </div>
     </div>

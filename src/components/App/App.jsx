@@ -82,12 +82,12 @@ function App() {
   };
 
   const switchToLoginModal = () => {
-    closeActiveModal("");
+    closeActiveModal();
     setActiveModal("login");
   };
 
   const switchToSignUpModal = () => {
-    closeActiveModal("");
+    closeActiveModal();
     setActiveModal("sign-up");
   };
 
@@ -136,14 +136,14 @@ function App() {
       ? addCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
+              cards.map((item) => (item._id === id ? updatedCard.data : item))
             );
           })
           .catch((err) => console.log(err))
       : removeCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
+              cards.map((item) => (item._id === id ? updatedCard.data : item))
             );
           })
           .catch((err) => console.log(err));
@@ -297,13 +297,13 @@ function App() {
           />
           <LoginModal
             isOpen={activeModal === "login"}
-            onClose={() => setActiveModal("")}
+            onClose={closeActiveModal}
             switchToSignUp={switchToSignUpModal}
             onLoginSubmit={handleSignInModalSubmit}
           />
           <RegisterModal
             isOpen={activeModal === "sign-up"}
-            onClose={() => setActiveModal("")}
+            onClose={closeActiveModal}
             switchToLogin={switchToLoginModal}
             onRegisterModalSubmit={handleRegisterModalSubmit}
           />
