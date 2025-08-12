@@ -7,7 +7,7 @@ function ItemModal({ onClose, card, isOpen, handleDeleteClick }) {
    const { currentUser } = useContext(CurrentUserContext);
   if (!card) return null;
 
-  const isOwn = currentUser ? card.owner === currentUser._id : false;
+  const isOwn = currentUser ? card.owner === currentUser.id : false;
   const itemDeleteButtonClassName = `modal__item-dlt-btn ${isOwn ? 'modal__item-dlt-btn_visible' : 'modal__item-dlt-btn_hidden'}`;
 
   function handleDelete() {

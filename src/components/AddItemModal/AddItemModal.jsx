@@ -111,7 +111,7 @@ export default function AddItemModal( { onClose, isOpen, onAddItemModalSubmit} )
             Cold
           </label>
         </fieldset>
-        <button type="submit" className="modal__submit" disabled={!name || !imageUrl || !temp}>Add garment</button>
+        <button type="submit" className="modal__submit" disabled={!name || !imageUrl || !weather}>Add garment</button>
       </ModalWithForm>
     )
 }

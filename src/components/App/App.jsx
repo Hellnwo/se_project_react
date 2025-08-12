@@ -251,7 +251,7 @@ function App() {
                 element={
                   <Main
                     weatherData={weatherData}
-                    onCardClick={handleCardClick}
+                    handleCardClick={handleCardClick}
                     handleCardLike={handleCardLike}
                     clothingItems={clothingItems}
                     onSignIn={handleSignIn}
@@ -263,7 +263,7 @@ function App() {
                 element={
                   <ProtectedRoute isloggedIn={isLoggedIn}>
                     <Profile
-                      onCardClick={handleCardClick}
+                      handleCardClick={handleCardClick}
                       clothingItems={clothingItems}
                       handleAddClick={handleAddClick}
                       username={currentUser?.name}

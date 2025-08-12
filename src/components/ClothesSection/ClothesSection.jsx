@@ -5,7 +5,7 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 export default function ClothesSection({ handleCardClick, handleCardLike, clothingItems, handleAddClick }) {
   const { currentUser } = useContext(CurrentUserContext);
-  const userCards = clothingItems.filter((card) => card.owner === currentUser?._id)
+  const userCards = clothingItems.filter((card) => card.owner === currentUser?.id)
   
     return(
         <div className="clothes-section">
@@ -15,12 +15,12 @@ export default function ClothesSection({ handleCardClick, handleCardLike, clothi
             </div>
             <ul className="clothes-section__items">
           {userCards
-            .map((item) => {
+            .map((card) => {
               return (
                 <ItemCard
-                  key={item._id}
-                  item={item}
-                  onCardClick={handleCardClick}
+                  key={card._id}
+                  card={card}
+                  handleCardClick={handleCardClick}
                   handleCardLike={handleCardLike}
                 />
               );
